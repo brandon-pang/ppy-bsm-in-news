@@ -1,0 +1,26 @@
+{
+  "name": "bsm-news",
+  "version": "0.1.0",
+  "description": "BSM Notification",
+  "author": "Brandon Pang <brandon@vertigogames.com>",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm i cache-loader@1.2.2",
+    "serve": "vue-cli-service serve --port 4000",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "cache-loader": "^1.2.2",
+    "vue": "^2.6.6"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-resource": "^1.5.1",
+    "vue-template-compiler": "^2.5.21"
+  }
+}

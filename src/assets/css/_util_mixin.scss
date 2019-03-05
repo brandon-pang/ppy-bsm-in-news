@@ -1,0 +1,72 @@
+/* mixin */
+$content-width : 940px;
+$mobile-520 : 520px;
+$tablet-650 : 650px;
+$tablet-991 : 991px;
+$tablet-1130 : 1400px;
+$tablet-1120 : 1120px;
+$tablet-1140 : 1140px;
+
+//mobile mixin
+@mixin tablet-hei-750 {
+  @media (min-height : #{$tablet-650}) {
+    @content;
+  }
+}
+
+@mixin tablet-991 {
+  @media (max-width : #{$tablet-991}) {
+    @content;
+  }
+}
+
+@mixin tablet-1130 {
+  @media (max-width : #{$tablet-1130}) {
+    @content;
+  }
+}
+
+@mixin tablet-1120 {
+  @media (max-width : #{$tablet-1120}) {
+    @content;
+  }
+}
+@mixin tablet-1140 {
+  @media (max-width : #{$tablet-1140}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width : #{$mobile-520}) {
+    @content;
+  }
+}
+
+@mixin text-style($font, $color, $fontSize, $fontWeight) {
+  color       : $color;
+  font-family : $font;
+  @if $fontSize != '' {
+    font-size   : $fontSize;
+  }
+  font-weight : $fontWeight;
+}
+
+@mixin flex-style($hAlign, $vAlign) {
+  display     : flex;
+  @if $hAlign == 'flex-start' {
+    justify-content   : $hAlign;
+    -webkit-box-align : inherit;
+    -ms-flex-align    : inherit;
+  } @else {
+    justify-content   : $hAlign;
+  }
+  align-items : $vAlign;
+}
+
+
+@mixin btn-style() {
+  height           : 50px;
+  width            : 169px;
+  border           : 1px solid #C9A56D;
+  background-color : #C9A56D;
+}
