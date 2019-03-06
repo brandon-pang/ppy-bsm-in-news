@@ -210,7 +210,7 @@
             },
             getNewsPostUrl: function () {
                 let vm = this;
-                let linkUrl = "./notice_ext/notice_data.json";
+                let linkUrl = "../notice_ext/notice_data.txt";
                 this.$http.get(linkUrl)
                     .then(function (res) {
                         console.log('clan', res.body.ResultCode[0])
