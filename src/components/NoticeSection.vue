@@ -98,10 +98,10 @@
                             <p class="txt--title">{{item.postTitle | truncate(43)}}</p>
                         </div>
                         <div class="wrap--icons" v-if="item.outerLinkUrl !=''">
-                            <img :src="'./external/images/icons/go_outer.png'" alt="">
+                            <img :src="'./notice_ext/images/icons/go_outer.png'" alt="">
                         </div>
                         <div class="wrap--icons" v-else>
-                            <img :src="'./external/images/icons/go_inner.png'" alt="">
+                            <img :src="'./notice_ext/images/icons/go_inner.png'" alt="">
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
             },
             getNewsPostUrl: function () {
                 let vm = this;
-                let linkUrl = "./external/notice_data.json";
+                let linkUrl = "./notice_ext/notice_data.json";
                 this.$http.get(linkUrl)
                     .then(function (res) {
                         console.log('clan', res.body.ResultCode[0])
@@ -259,16 +259,16 @@
                 //console.log(value)
                 switch (value) {
                     case '1':
-                        return '../external/images/icons/tag-new.png';
+                        return './notice_ext/images/icons/tag-new.png';
                         break;
                     case '2':
-                        return '../external/images/icons/tag-hot.png';
+                        return './notice_ext/images/icons/tag-hot.png';
                         break;
                     case '3':
-                        return '../external/images/icons/tag-sale.png';
+                        return './notice_ext/images/icons/tag-sale.png';
                         break;
                     case '4':
-                        return '../external/images/icons/tag-update.png';
+                        return './notice_ext/images/icons/tag-update.png';
                         break;
                     default :
                         return '';
