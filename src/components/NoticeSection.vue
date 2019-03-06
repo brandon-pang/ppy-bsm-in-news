@@ -283,7 +283,7 @@
     @import '../assets/css/global';
 
     .notice--system {
-        width: 80%;
+        width: 100%;
         height: 100%;
         @include flex-style(center, center);
         position: relative;
