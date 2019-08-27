@@ -1,88 +1,40 @@
-{
+
   "noticeData": [
     {
       "Featured" : "Y",
-      "FeaturedImgUrl": "./notice_ext/images/featured/f_banner_01.png",
-      "NormalImgUrl": "./notice_ext/images/normal/n_banner_01.jpg",
-      "HeaderImgUrl": "./notice_ext/images/header/h_banner_01.jpg",
-      "Tags": "1",
+      "FeaturedImgUrl": "./notice_ext/images/featured/f_banner_open_01.jpg",
+      "NormalImgUrl": "./notice_ext/images/normal/n_banner_open_01.jpg",
+      "HeaderImgUrl": "./notice_ext/images/header/h_banner_open_01.jpg",
+      "Tags": "0",
       "outerLinkUrl": "",
       "categoryName":"NEWS",
-      "postDate": "Feb 2, 2019",
-      "postTitle": "CHALLENGE OF THE GMS",
-      "postContent": "The GMs challenge you. Do you accept or are you chicken? Cheep chip chip cheeep!"
+      "postDate": "April 9, 2019",
+      "postTitle": "WELCOME TO BLACKSHOT M: GEARS",
+      "postContent": "<b>Welcome to BlackShot M : Gears!</b><br>BlackShot M : Gears is open in Southeast Asia, Australia and New Zealand.<br><br>Competitive Mode will begin with a 3-week Pre-Season. After that, the official First Season will begin and last for 4 weeks.<br><br>Pre-Season Schedule<br>4/9 ~ 4/30"
     },
     {
       "Featured" : "Y",
-      "FeaturedImgUrl": "./notice_ext/images/featured/f_banner_01.png",
-      "NormalImgUrl": "./notice_ext/images/normal/n_banner_01.jpg",
-      "HeaderImgUrl": "./notice_ext/images/header/h_banner_01.jpg",
-      "Tags": "2",
+      "FeaturedImgUrl": "./notice_ext/images/featured/f_banner_open_01.jpg",
+      "NormalImgUrl": "",
+      "HeaderImgUrl": "./notice_ext/images/header/h_banner_open_01.jpg",
+      "Tags": "0",
       "outerLinkUrl": "",
       "categoryName":"NEWS",
-      "postDate": "Feb 2, 2019",
-      "postTitle": "FOR THE LOVE OF THE KILL FOR THE LOVE OF THE KILL FOR THE LOVE OF THE KILL FOR THE LOVE OF THE KILL",
-      "postContent": "Is your love for battle greater than all others?"
+      "postDate": "April 9, 2019",
+      "postTitle": "WELCOME TO BLACKSHOT M: GEARS",
+      "postContent": "<b>Welcome to BlackShot M : Gears!</b><br>BlackShot M : Gears is open in Southeast Asia, Australia and New Zealand.<br><br>Competitive Mode will begin with a 3-week Pre-Season. After that, the official First Season will begin and last for 4 weeks.<br><br>Pre-Season Schedule<br>4/9 ~ 4/30"
     },
     {
       "Featured" : "N",
       "FeaturedImgUrl": "",
-      "NormalImgUrl": "./notice_ext/images/normal/n_banner_01.jpg",
+      "NormalImgUrl": "./notice_ext/images/normal/n_banner_registered_01.jpg",
       "HeaderImgUrl": "",
-      "Tags": "3",
-      "outerLinkUrl": "https://www.youtube.com/watch?v=IkQzUgtKkRI",
+      "Tags": "0",
+      "outerLinkUrl": "https://bsm.papayaplay.com/reward/main.do",
       "categoryName": "LINKS",
-      "postDate": "Feb 2, 2019",
-      "postTitle": "WEEKEND VALENTINE'S",
+      "postDate": "April 9, 2019",
+      "postTitle": "A LINK FOR PRE-REGISTERED USERS",
       "postContent": ""
-    },
-    {
-      "Featured" : "Y",
-      "FeaturedImgUrl": "./notice_ext/images/featured/f_banner_01.png",
-      "NormalImgUrl": "./notice_ext/images/normal/n_banner_01.jpg",
-      "HeaderImgUrl": "",
-      "Tags": "4",
-      "outerLinkUrl": "https://www.youtube.com/watch?v=IkQzUgtKkRI",
-      "categoryName":"LINKS",
-      "postDate": "Feb 2, 2019",
-      "postTitle": "STREAMING WITH THE GMS",
-      "postContent": "Watch the livestream, get rewards"
-    },
-    {
-      "Featured" : "N",
-      "FeaturedImgUrl": "",
-      "NormalImgUrl": "./notice_ext/images/normal/n_banner_01.jpg",
-      "HeaderImgUrl": "./notice_ext/images/header/h_banner_01.jpg",
-      "Tags": "0",
-      "outerLinkUrl": "",
-      "categoryName":"NEWS",
-      "postDate": "Feb 2, 2019",
-      "postTitle": "CHALLENGE OF THE GMS",
-      "postContent": "Attention! The SEA GMs each have a challenge for you to undertake in exchange for rewards and glory! Let's see if you are truly worth their respect...\n\n\n\nDuration:\n\n\n\n14 Feb - 21 Feb (Signup phase) 21 Feb - 14 Mar (Challenge phase)"
-    },
-    {
-      "Featured" : "N",
-      "FeaturedImgUrl": "",
-      "NormalImgUrl": "./notice_ext/images/normal/n_banner_01.jpg",
-      "HeaderImgUrl": "./notice_ext/images/header/h_banner_01.jpg",
-      "Tags": "0",
-      "outerLinkUrl": "",
-      "categoryName":"UPDATE",
-      "postDate": "Feb 2, 2019",
-      "postTitle": "LUNAR RUSH",
-      "postContent": "Gong Xi Fa Cai, mercs! Prosperous times await this Lunar New Year! Accomplish these three objectives during Chinese New Year to receive rewards:\n\nDuration: 4,5,6 Feb "
-    },
-    {
-      "Featured" : "Y",
-      "FeaturedImgUrl": "./notice_ext/images/featured/f_banner_01.png",
-      "NormalImgUrl": "./notice_ext/images/normal/n_banner_01.jpg",
-      "HeaderImgUrl": "./notice_ext/images/header/h_banner_01.jpg",
-      "Tags": "1",
-      "outerLinkUrl": "",
-      "categoryName":"NEWS",
-      "postDate": "7 days ago",
-      "postTitle": "BA 2.8.0 PATCH NOTES",
-      "postContent": "A lovely Valentine’s season to you, mercs. Check out the patch notes for our February update.\n\nValentine’s Seasonal Items\n\nNew weapons have been added to the Gachaboxes and Shop:\n\nGachabox\n-AWP Monkey King (Tier 5)\n-AKS74U Molten (Tier 5)\n-M4A1 Kitty (Tier 5)\n-Heart Grenade (Tier 5)\n\nShop\n-M870 Rose (Tier 3)\n-M24 Rising Heart (Tier 4)\n-MP5K Rising Heart (Tier 4)\n-Bloody Rose (Tier 4)\n-Love Mask\n-Multi Weapon + (Bonus Weapon Slot, Movement Speed and Weapon Switch Speed)\n\nVintage Firepower\n\nThese classic weapons have been beefed up and returned to the Shop:\n\n-AK47 (Tier 4)\n-K2 (Tier 4)\n-FAMAS (Tier 4)\n-Type64 (Tier 3)\n-Type89 (Tier 3)\n-PSG-1 (Tier 4)\n-T5000 (Tier 4)\n-M21 (Tier 3)\n\nLevel Generation 2\n\nLevel Generation 2 has been introduced. Players who surpass G 1.99 will receive the following rewards:\n-M4 Omega 3d\n-McMillan Omega 3d\n-Barrett Omega 3d\n-AK47 SRM Omega 3d\n-Glock Dual White 3d\n\nCompetitive Mode Season 7\n\n-Season 7 now includes Scopes and Silencers in higher tier rewards. Go here for a full list of rewards.\n\n-Season 6 Maps\nSD: Hans Cargo, Plaza\nTFM: Ancient Collection, The Hunting\nWR: Safe House, Radar Station"
     }
   ],
   "ResultCode": [

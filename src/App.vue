@@ -9,15 +9,40 @@ import NoticeSection from "./components/NoticeSection";
 
 export default {
   name: 'app',
+
   components: {
     NoticeSection,
   }
 }
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
+function preventDefault(e){
+  e.preventDefault();
+}
+
+function disableScroll(){
+  document.body.addEventListener('touchmove', preventDefault, { passive: false });
+}
+
+function enableScroll(){
+  document.body.removeEventListener('touchmove', preventDefault);
+}
+
 </script>
 
 <style lang="scss">
   @import './assets/css/global';
-
   /* rajdhani */
   /* rajdhani-regular - latin */
   @font-face {
@@ -72,16 +97,24 @@ export default {
     url('./assets/fonts/rajdhani-v8-latin-700.svg#Rajdhani') format('svg'); /* Legacy iOS */
   }
 
+  html, body{
+    margin: 0;
+    padding:0;
+    position: fixed;
+    overflow: hidden;
+    overscroll-behavior: none;
+    background-color:#4D5E9C;
+  }
+
   #app {
     font-family: 'Rajdhani', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    width:100%;
-    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-    //height: calc(var(--vh, 1vh) * 100);
-    background-color:#eeeeee;
+    width: 100vw;
+    height: 100vh;
+    background-color:#4D5E9C;
     @include flex-style(center,center);
   }
 </style>

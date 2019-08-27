@@ -2,11 +2,12 @@
     <div class="notice--system">
         <div class="cont--notice-detail" v-if="isShowDetail">
             <div class="wrap--detail-top">
-                <img :src="innerPostDatas[nowClickNo].Tags | badgeImg" alt="" class="img--badge">
+                <div v-if="innerPostDatas[nowClickNo].Tags ==='0' || innerPostDatas[nowClickNo].Tags===''"></div>
+                <img :src="innerPostDatas[nowClickNo].Tags | badgeImg" class="img--badge" v-else>
                 <div class="top--title"
                      :style="{'background-image':'url('+innerPostDatas[nowClickNo].HeaderImgUrl+')'}">
-                    <p class="txt--date">{{innerPostDatas[nowClickNo].postDate}}</p>
-                    <p class="txt--title">{{innerPostDatas[nowClickNo].postTitle | truncate(80)}}</p>
+                    <p class="txt--date" v-html="innerPostDatas[nowClickNo].postDate"></p>
+                    <p class="txt--title" v-html="$options.filters.truncate(innerPostDatas[nowClickNo].postTitle, 80)"></p>
                 </div>
             </div>
             <div class="wrap--detail-mid">
@@ -86,24 +87,33 @@
         </div>
         <div class="cont--notice-right">
             <section class="cont--scroll">
-                <div class="wrap--news" v-for="(item,index) in leftBannerDatas">
+                <div class="wrap--news" v-for="(item,index) in leftBannerDatas" v-if="item.NormalImgUrl !==''">
                     <img :src="item.Tags | badgeImg" alt="" class="img--badge">
                     <div class="wrap--img" :style="{'background-image':'url('+item.NormalImgUrl+')'}"></div>
-                    <div class="cont--title-bar" @click="getShowDetail(item.postID,index)">
+                    <a href="#" class="cont--title-bar" @click="getShowDetail(item.postID, index)" v-if="item.outerLinkUrl ==''">
                         <div class="wrap--cate">
-                            <p class="txt--cate">{{item.categoryName}}</p>
-                            <p class="txt--date">{{item.postDate}}</p>
+                            <p class="txt--cate" v-html="item.categoryName"></p>
+                            <p class="txt--date" v-html="item.postDate"></p>
                         </div>
                         <div class="wrap--title">
-                            <p class="txt--title">{{item.postTitle | truncate(43)}}</p>
+                            <p class="txt--title" v-html="$options.filters.truncate(item.postTitle, 43)"></p>
                         </div>
-                        <div class="wrap--icons" v-if="item.outerLinkUrl !=''">
-                            <img :src="'./notice_ext/images/icons/go_outer.png'" alt="">
-                        </div>
-                        <div class="wrap--icons" v-else>
+                        <div class="wrap--icons">
                             <img :src="'./notice_ext/images/icons/go_inner.png'" alt="">
                         </div>
-                    </div>
+                    </a>
+                    <a class="cont--title-bar" v-else :href="item.outerLinkUrl" target="_self">
+                        <div class="wrap--cate">
+                            <p class="txt--cate" v-html="item.categoryName"></p>
+                            <p class="txt--date" v-html="item.postDate"></p>
+                        </div>
+                        <div class="wrap--title">
+                            <p class="txt--title" v-html="$options.filters.truncate(item.postTitle, 43)"></p>
+                        </div>
+                        <div class="wrap--icons">
+                            <img :src="'./notice_ext/images/icons/go_outer.png'" alt="">
+                        </div>
+                    </a>
                 </div>
                 <!--<div class="wrap&#45;&#45;btn"><div class="btn&#45;&#45;more">Load More</div></div>-->
             </section>
@@ -139,6 +149,20 @@
             this.getNewsPostUrl();
         },
         methods: {
+	        getUrlParameter:function(sParam) {
+		        var sPageURL = window.location.search.substring(1),
+				        sURLVariables = sPageURL.split('&'),
+				        sParameterName,
+				        i;
+
+		        for (i = 0; i < sURLVariables.length; i++) {
+			        sParameterName = sURLVariables[i].split('=');
+
+			        if (sParameterName[0] === sParam) {
+				        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+			        }
+		        }
+	        },
             detailLocBtn: function () {
                 setTimeout(function () {
                     let viewportHei = $(window).height();
@@ -146,9 +170,9 @@
                     let contentMid = $('.wrap--detail-mid')[0].scrollHeight;
                     let contentBt = $('.wrap--detail-bt')[0].scrollHeight;
                     let contentHei = contentTop + contentMid;
-                    console.log(viewportHei, contentHei)
+                   // console.log(viewportHei, contentHei)
                     if (contentHei >= viewportHei) {
-                        console.log(viewportHei <= contentHei)
+                       // console.log(viewportHei <= contentHei)
                         $('.wrap--detail-bt').css({'top': (contentHei + 20)})
                     } else {
                         $('.wrap--detail-bt').css({'top': viewportHei - contentBt})
@@ -162,6 +186,8 @@
                 console.log(id, oriID)
                 vm.isPrevBtn = false;
                 vm.isNextBtn = false;
+	            vm.isShowDetail = false;
+
                 if (id !== '') {
                     vm.nowClickNo = id;
                     vm.isShowDetail = true;
@@ -174,7 +200,8 @@
                     vm.detailLocBtn();
                 } else {
                     vm.isShowDetail = false;
-                    window.open(vm.leftBannerDatas[oriID].outerLinkUrl, '_blank');
+                    //window.open(vm.leftBannerDatas[oriID].outerLinkUrl, '_blank');
+                    //location.href=vm.leftBannerDatas[oriID].outerLinkUrl
                 }
             },
 
@@ -210,18 +237,19 @@
             },
             getNewsPostUrl: function () {
                 let vm = this;
-                let linkUrl = "../notice_ext/notice_data.txt";
+	            let paramVer=this.getUrlParameter('ver') | '';
+                let linkUrl = `./notice_ext/notice_data_${paramVer}.txt`;
                 this.$http.get(linkUrl)
                     .then(function (res) {
-                        console.log('clan', res.body.ResultCode[0])
+                        //console.log('clan', res.body.ResultCode[0])
                         let Code = res.body.ResultCode[0].Code;
                         let Data = res.body.noticeData;
-                        console.log('code1', Code)
+                        //console.log('code1', Code)
                         if (Code === "10000") {
                             //3개씩 끊기
                             //1:hot,2:new,3:sale,4:update
                             vm.leftBannerDatas = Data
-                            console.log('ori', vm.leftBannerDatas)
+                            //console.log('ori', vm.leftBannerDatas)
                             var insNo = 0
                             for (let i in Data) {
                                 vm.leftBannerDatas[i].postID = '';
@@ -230,18 +258,16 @@
                                     vm.innerPostDatas.push(vm.leftBannerDatas[i]);
                                 }
                                 if (Data[i].Featured == 'Y') {
-                                    vm.featuredDatas.push(vm.leftBannerDatas[i]);
+	                                vm.featuredDatas.push(vm.leftBannerDatas[i]);
                                 }
                             }
-                            console.log('out', vm.innerPostDatas)
-                            console.log('out', vm.featuredDatas)
                         }
                     })
                     .catch(function (err) {
 
                     })
                     .finally(function () {
-                        console.log("finally finished gists");
+                       // console.log("finally finished gists");
                     })
             }
         },
@@ -293,24 +319,25 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-color: white;
             overflow-x: hidden;
-            overflow-y: scroll;
+            overflow-y: auto;
+            overscroll-behavior-y: contain;
             width: 100%;
             height: 100%;
+            background-color: #132031;
 
             .wrap--detail-top {
                 @include flex-style(center, center);
                 position: relative;
                 width: 100%;
                 height: 38vh;
-
+                border-bottom: 2px solid orange;
                 .img--badge {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    width: 14vh;
-                    height: 14vh;
+                    width: 10vh;
+                    height: auto;
                 }
 
                 .top--title {
@@ -319,25 +346,36 @@
                     width: 100%;
                     height: 100%;
                     background-position: center;
-                    background-size: cover;
+                    background-size: 100vw 60vh;
+                    background-repeat: no-repeat;
                     @include flex-style(center, flex-start);
                     flex-direction: column;
 
                     .txt--date {
-                        color: #666666;
+                        color: orange;
                         font-family: 'Rajdhani', sans-serif;
                         font-size: 4vh;
-                        font-weight: 500;
-                        text-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+                        font-weight: 600;
+                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+                        background-color: rgba(#000, 0.5);
+                        padding:5px;
+                        b{
+                            font-weight: bold;
+                        }
                     }
 
                     .txt--title {
                         color: #FFFFFF;
                         font-family: 'Rajdhani', sans-serif;
-                        font-size: 8vh;
+                        font-size: 2rem;
                         font-weight: 700;
-                        text-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
                         text-align: left;
+                        background-color: rgba(#000, 0.5);
+                        padding:5px;
+                        b{
+                            font-weight: bold;
+                        }
                     }
                 }
             }
@@ -348,12 +386,15 @@
 
                 .txt--context {
                     padding: 1.4rem;
-                    color: #000000;
+                    color: #eee;
                     font-family: 'Rajdhani', sans-serif;
                     font-size: 1.4rem;
                     font-weight: 500;
-                    line-height: 2rem;
+                    line-height: 1.8rem;
                     text-align: left;
+                    b{
+                        font-weight: bold;
+                    }
                 }
             }
 
@@ -517,7 +558,7 @@
                     height: 100vh;
                     background-position: center;
                     background-repeat: no-repeat;
-                    background-size: cover;
+                    background-size: 47vw 100vh;
                     @include flex-style(center, flex-end);
                     position: relative;
 
@@ -526,7 +567,7 @@
                         top: 0;
                         left: 0;
                         width: auto;
-                        height: 20vh;
+                        height: 10vh;
                     }
 
                     .btn--more {
@@ -535,7 +576,6 @@
                         height: 10vh;
                         width: 20vw;
                         border: 1px solid rgba(244, 244, 244, 0.53);
-                        border-radius: 5px;
                         background: linear-gradient(0deg, #B78B09 0%, #A07310 53.59%, #B1920D 100%);
 
                         color: #EEEEEE;
@@ -587,6 +627,8 @@
                 height: 100%;
                 overflow-x: hidden;
                 overflow-y: scroll;
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior-y: contain;
 
                 .wrap--news {
                     margin-top: 10px;
@@ -596,13 +638,13 @@
                     @include flex-style(center, center);
                     flex-direction: column;
                     position: relative;
-
+                    border: 1px solid #000000;
                     .img--badge {
                         position: absolute;
                         top: 0;
                         left: 0;
                         width: auto;
-                        height: 5rem;
+                        height: 8vh;
                     }
 
                     .wrap--img {
@@ -610,15 +652,16 @@
                         height: 60%;
                         background-repeat: no-repeat;
                         background-position: center;
-                        background-size: cover;
+                        background-size: 54vw 35vh;
                     }
 
                     .cont--title-bar {
                         height: 40%;
                         width: 100%;
-                        border: 1px solid #000000;
-                        background-color: #FFFFFF;
+                        border-top: 1px solid #000000;
+                        background-color: #1E344E;
                         position: relative;
+                        text-decoration-line: none;
 
                         .wrap--cate {
                             margin-top: 3vh;
@@ -627,21 +670,26 @@
                             height: 10%;
 
                             .txt--cate {
-                                color: #18215C;
+                                color: #F1A441;
                                 font-family: 'Rajdhani', sans-serif;
                                 letter-spacing: -1;
-                                font-size: 3vh;
+                                font-size: 3.5vh;
                                 font-weight: 700;
-                                line-height: 3vh;
+                                line-height:3.6vh;
+                                b{
+                                    font-weight: bold;
+                                }
                             }
-
                             .txt--date {
                                 margin-left: 10px;
-                                color: #666666;
+                                color: #eee;
                                 font-family: 'Rajdhani', sans-serif;
-                                font-size: 3vh;
+                                font-size: 3.5vh;
                                 font-weight: 500;
-                                line-height: 3vh;
+                                line-height: 3.6vh;
+                                b{
+                                    font-weight: bold;
+                                }
                             }
                         }
 
@@ -652,13 +700,16 @@
                             margin-right: 4vh;
 
                             .txt--title {
-                                color: #000000;
+                                color: #fff;
                                 font-family: 'Rajdhani', sans-serif;
                                 font-size: 6vh;
                                 font-weight: 700;
-                                line-height: 5.5vh;
+                                line-height: 6.2vh;
                                 text-align: left;
                                 word-break: break-all;
+                                b{
+                                    font-weight: bold;
+                                }
                             }
                         }
 
@@ -698,28 +749,24 @@
                         @include flex-style(center, center)
                     }
                 }
-
             }
         }
-
     }
 
     @include tablet-hei-750() {
         .notice--system {
             .cont--notice-detail {
                 .wrap--detail-top {
-                    height: 32vh;
-
+                    height: 34vh;
                     .img--badge {
                         width: 10vh;
                         height: 10vh;
                     }
-
                     .top--title {
                         padding-left: 6vh;
 
                         .txt--date {
-                            color: #666666;
+                            color: orange;
                             font-size: 4vh;
                         }
 
@@ -728,7 +775,6 @@
                         }
                     }
                 }
-
                 .wrap--detail-mid {
                     .txt--context {
                         padding: 5vh;

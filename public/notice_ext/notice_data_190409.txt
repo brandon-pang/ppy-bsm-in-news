@@ -1,27 +1,15 @@
-
+{
   "noticeData": [
     {
       "Featured" : "Y",
       "FeaturedImgUrl": "./notice_ext/images/featured/f_banner_open_01.jpg",
       "NormalImgUrl": "./notice_ext/images/normal/n_banner_open_01.jpg",
       "HeaderImgUrl": "./notice_ext/images/header/h_banner_open_01.jpg",
-      "Tags": "0",
+      "Tags": "2",
       "outerLinkUrl": "",
       "categoryName":"NEWS",
-      "postDate": "April 9, 2019",
-      "postTitle": "WELCOME TO BLACKSHOT M: GEARS",
-      "postContent": "<b>Welcome to BlackShot M : Gears!</b><br>BlackShot M : Gears is open in Southeast Asia, Australia and New Zealand.<br><br>Competitive Mode will begin with a 3-week Pre-Season. After that, the official First Season will begin and last for 4 weeks.<br><br>Pre-Season Schedule<br>4/9 ~ 4/30"
-    },
-    {
-      "Featured" : "Y",
-      "FeaturedImgUrl": "./notice_ext/images/featured/f_banner_open_01.jpg",
-      "NormalImgUrl": "",
-      "HeaderImgUrl": "./notice_ext/images/header/h_banner_open_01.jpg",
-      "Tags": "0",
-      "outerLinkUrl": "",
-      "categoryName":"NEWS",
-      "postDate": "April 9, 2019",
-      "postTitle": "WELCOME TO BLACKSHOT M: GEARS",
+      "postDate": "April 22, 2019",
+      "postTitle": "190409 Test Notice",
       "postContent": "<b>Welcome to BlackShot M : Gears!</b><br>BlackShot M : Gears is open in Southeast Asia, Australia and New Zealand.<br><br>Competitive Mode will begin with a 3-week Pre-Season. After that, the official First Season will begin and last for 4 weeks.<br><br>Pre-Season Schedule<br>4/9 ~ 4/30"
     },
     {
@@ -32,8 +20,8 @@
       "Tags": "0",
       "outerLinkUrl": "https://bsm.papayaplay.com/reward/main.do",
       "categoryName": "LINKS",
-      "postDate": "April 9, 2019",
-      "postTitle": "A LINK FOR PRE-REGISTERED USERS",
+      "postDate": "April 9, 2019 test",
+      "postTitle": "A LINK FOR Notice Test",
       "postContent": ""
     }
   ],
