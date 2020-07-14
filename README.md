@@ -1,4 +1,11 @@
-# bsm-news
+# In-game News for BlackShot Mobile
+> BSM in-game notice and news
+
+## Spec
+```
+- Vue.js
+- Sass
+```
 
 ## Project setup
 ```
@@ -7,23 +14,15 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm serve
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+npm build
 ```
 
-### Run your tests
+### Postinstall
 ```
-npm run test
+npm postintall
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
